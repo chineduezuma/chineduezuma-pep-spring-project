@@ -14,7 +14,7 @@ import java.util.List;
 public interface MessageRepository extends JpaRepository<Message, Integer> {
 
     @Query("FROM Account WHERE accountId = :accountId")
-    Account getAccountByUsername(@Param("accountId") Integer accountId);
+    Account getAccountByAccountId(@Param("accountId") Integer accountId);
     
     @Query("FROM Message WHERE postedBy = :accountId")
     List<Message> getAllMessagesByAccountId(@Param("accountId") Integer accountId);

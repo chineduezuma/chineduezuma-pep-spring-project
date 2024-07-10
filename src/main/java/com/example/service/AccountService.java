@@ -26,26 +26,20 @@ public class AccountService {
         if(newAccount.getUsername() != "" && newAccount.getPassword().length() >= 4 && accountRepository.findAccountByUsername(newAccount.getUsername()) == null){
              return accountRepository.save(newAccount);
         }
-        return null sdfghjh;
+        return null;
+    }
+
+
+
+    public Account verifyAccount(Account account){
+        
+        if(accountRepository.findAccountByUsernameAndPassword(account.getUsername(), account.getPassword()) != null ){
+             return accountRepository.save(account);
+        }
+        return null;
     }
 
     
-
-    public List<Album> getAllAlbums(){
-        return albumRepository.findAll();
-    }
-
-    public Song addSongToAlbum(long albumId, Song song){
-        Album album = albumRepository.findById(albumId).get();
-        album.getSongs().add(song);
-        albumRepository.save(album);
-        return song;
-    }
-
-    public Artist addArtist(Artist artist){
-        return artistRepository.save(artist);
-    }
-
 
     
 }
