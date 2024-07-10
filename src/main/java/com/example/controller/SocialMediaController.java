@@ -52,17 +52,48 @@ public class SocialMediaController {
         // Logic to authenticate user login
     }
 
+
+
+    @RequestMapping(value = "/messages", method = RequestMethod.GET)
+    @GetMapping("/messages")
+    public @ResponseBody List<Message> getAllMessages() {
+        // Logic to authenticate user login
+    }
+
     
     
-    @RequestMapping("/{userId}", method = RequestMethod.GET)
-    public @ResponseBody User getUserProfile(@PathVariable Long userId) {
+    @RequestMapping(value = "/messages/{message_id}", method = RequestMethod.GET)
+    @GetMapping("/messages/{message_id}")
+    public @ResponseBody Message getMessageByMessageId(@PathVariable Integer messageId) {
         // Logic to retrieve user profile
     }
 
-    @RequestMapping("/{userId}", method = RequestMethod.PUT)
-    public @ResponseBody User updateUserProfile(@PathVariable Long userId, @RequestBody User updatedUser) {
-        // Logic to update user profile
+
+
+    @RequestMapping(value = "/messages/{message_id}", method = RequestMethod.DELETE)
+    @DeleteMapping("/messages/{message_id}")
+    public @ResponseBody Integer deleteMessageByMessageId(@PathVariable Integer messageId) {
+        // Logic to retrieve user profile
     }
+
+
+
+    @RequestMapping(value = "/messages/{message_id}", method = RequestMethod.PATCH)
+    @PatchMapping("/messages/{message_id}")
+    public @ResponseBody Integer patchMessageByMessageId(@PathVariable Integer messageId, @RequestBody Message newMessage) {
+        // Logic to retrieve user profile
+    }
+
+
+
+    @RequestMapping(value = "/accounts/{account_id}/messages", method = RequestMethod.GET)
+    @GetMapping("/accounts/{account_id}/messages")
+    public @ResponseBody List<Message> getAllMessagesByAccountId(@PathVariable Integer accountId) {
+        // Logic to authenticate user login
+    }
+
+
+
     
     @PostMapping("submit")
     public ResponseEntity<String> submitInfo(@RequestParam String email,
