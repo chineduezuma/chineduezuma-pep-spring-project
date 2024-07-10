@@ -40,7 +40,7 @@ public class SocialMediaController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @PostMapping("/login")
-    public @ResponseBody Account login(@RequestBody Account loginRequest) {
+    public @ResponseBody Account addlogin(@RequestBody Account loginRequest) {
         // Logic to authenticate user login
     }
 
@@ -48,7 +48,7 @@ public class SocialMediaController {
 
     @RequestMapping(value = "/messages", method = RequestMethod.POST)
     @PostMapping("/messages")
-    public @ResponseBody Message createMessage(@RequestBody Message newMessage) {
+    public @ResponseBody Message addMessage(@RequestBody Message newMessage) {
         // Logic to authenticate user login
     }
 
@@ -56,7 +56,7 @@ public class SocialMediaController {
 
     @RequestMapping(value = "/messages", method = RequestMethod.GET)
     @GetMapping("/messages")
-    public @ResponseBody List<Message> getAllMessages() {
+    public @ResponseBody List<Message> findAllMessages() {
         // Logic to authenticate user login
     }
 
@@ -64,7 +64,7 @@ public class SocialMediaController {
     
     @RequestMapping(value = "/messages/{message_id}", method = RequestMethod.GET)
     @GetMapping("/messages/{message_id}")
-    public @ResponseBody Message getMessageByMessageId(@PathVariable Integer messageId) {
+    public @ResponseBody Message findMessageByMessageId(@PathVariable Integer messageId) {
         // Logic to retrieve user profile
     }
 
@@ -72,7 +72,7 @@ public class SocialMediaController {
 
     @RequestMapping(value = "/messages/{message_id}", method = RequestMethod.DELETE)
     @DeleteMapping("/messages/{message_id}")
-    public @ResponseBody Integer deleteMessageByMessageId(@PathVariable Integer messageId) {
+    public @ResponseBody Integer removeMessageByMessageId(@PathVariable Integer messageId) {
         // Logic to retrieve user profile
     }
 
@@ -80,7 +80,7 @@ public class SocialMediaController {
 
     @RequestMapping(value = "/messages/{message_id}", method = RequestMethod.PATCH)
     @PatchMapping("/messages/{message_id}")
-    public @ResponseBody Integer patchMessageByMessageId(@PathVariable Integer messageId, @RequestBody Message newMessage) {
+    public @ResponseBody Integer updatehMessageByMessageId(@PathVariable Integer messageId, @RequestBody Message newMessage) {
         // Logic to retrieve user profile
     }
 

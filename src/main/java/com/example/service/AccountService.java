@@ -23,7 +23,7 @@ public class AccountService {
 
     public Account addNewAccount(Account newAccount){
         
-        if(newAccount.getUsername() != "" && newAccount.getPassword().length() >= 4 && accountRepository.getAccountByUsername(newAccount.getUsername()) == null){
+        if(newAccount.getUsername() != "" && newAccount.getPassword().length() >= 4 && accountRepository.findAccountByUsername(newAccount.getUsername()) == null){
              return accountRepository.save(newAccount);
         }
         return null sdfghjh;

@@ -13,5 +13,5 @@ import java.util.List;
 public interface AccountRepository extends JpaRepository<Account, Integer> {
 
     @Query("FROM Account WHERE username = :username")
-    Account getAccountByUsername(@Param("username") String username);
+    Account findAccountByUsername(@Param("username") String username);
 }
