@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
  * where applicable as well as the @ResponseBody and @PathVariable annotations. You should
  * refer to prior mini-project labs and lecture materials for guidance on how a controller may be built.
  */
-@Controller
+// @Controller
 @RestController
 @ResponseBody
 public class SocialMediaController {
@@ -30,7 +30,7 @@ public class SocialMediaController {
     }
 
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    // @RequestMapping(value = "/register", method = RequestMethod.POST)
     @PostMapping("/register")
     public @ResponseBody Account register(@RequestBody Account newUser) {
         // Logic to register a new user
@@ -38,7 +38,7 @@ public class SocialMediaController {
 
 
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    // @RequestMapping(value = "/login", method = RequestMethod.POST)
     @PostMapping("/login")
     public @ResponseBody Account addlogin(@RequestBody Account loginRequest) {
         // Logic to authenticate user login
@@ -46,7 +46,7 @@ public class SocialMediaController {
 
 
 
-    @RequestMapping(value = "/messages", method = RequestMethod.POST)
+    // @RequestMapping(value = "/messages", method = RequestMethod.POST)
     @PostMapping("/messages")
     public @ResponseBody Message addMessage(@RequestBody Message newMessage) {
         // Logic to authenticate user login
@@ -54,7 +54,7 @@ public class SocialMediaController {
 
 
 
-    @RequestMapping(value = "/messages", method = RequestMethod.GET)
+    // @RequestMapping(value = "/messages", method = RequestMethod.GET)
     @GetMapping("/messages")
     public @ResponseBody List<Message> findAllMessages() {
         // Logic to authenticate user login
@@ -62,7 +62,7 @@ public class SocialMediaController {
 
     
     
-    @RequestMapping(value = "/messages/{message_id}", method = RequestMethod.GET)
+    // @RequestMapping(value = "/messages/{message_id}", method = RequestMethod.GET)
     @GetMapping("/messages/{message_id}")
     public @ResponseBody Message findMessageByMessageId(@PathVariable Integer messageId) {
         // Logic to retrieve user profile
@@ -70,7 +70,7 @@ public class SocialMediaController {
 
 
 
-    @RequestMapping(value = "/messages/{message_id}", method = RequestMethod.DELETE)
+    // @RequestMapping(value = "/messages/{message_id}", method = RequestMethod.DELETE)
     @DeleteMapping("/messages/{message_id}")
     public @ResponseBody Integer removeMessageByMessageId(@PathVariable Integer messageId) {
         // Logic to retrieve user profile
@@ -78,7 +78,7 @@ public class SocialMediaController {
 
 
 
-    @RequestMapping(value = "/messages/{message_id}", method = RequestMethod.PATCH)
+    // @RequestMapping(value = "/messages/{message_id}", method = RequestMethod.PATCH)
     @PatchMapping("/messages/{message_id}")
     public @ResponseBody Integer updatehMessageByMessageId(@PathVariable Integer messageId, @RequestBody Message newMessage) {
         // Logic to retrieve user profile
@@ -86,7 +86,7 @@ public class SocialMediaController {
 
 
 
-    @RequestMapping(value = "/accounts/{account_id}/messages", method = RequestMethod.GET)
+    // @RequestMapping(value = "/accounts/{account_id}/messages", method = RequestMethod.GET)
     @GetMapping("/accounts/{account_id}/messages")
     public @ResponseBody List<Message> getAllMessagesByAccountId(@PathVariable Integer accountId) {
         // Logic to authenticate user login
