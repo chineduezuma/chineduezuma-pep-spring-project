@@ -7,6 +7,51 @@ package com.example.controller;
  * where applicable as well as the @ResponseBody and @PathVariable annotations. You should
  * refer to prior mini-project labs and lecture materials for guidance on how a controller may be built.
  */
+@RestController
+@RequestMapping("account")
 public class SocialMediaController {
+
+    @PostMapping("submit")
+    public ResponseEntity<String> submitInfo(@RequestParam String email,
+                                          @RequestParam String major,
+                                          @RequestParam int age,
+                                          @RequestParam String password){
+
+        studentList.add(new Student(email, major, age, password));
+        return ResponseEntity.status(201)
+                .body("Successfully Registered");
+
+    }
+
+    @PutMapping("update")
+    public @ResponseBody String update(@RequestBody Student updatedStudent){
+        if(studentList.removeIf(student -> student.getEmail().equals(updatedStudent.getEmail()))) {
+            studentList.add(updatedStudent);
+            return "Successfully updated";
+        }
+        return "Email was not registered, check email and try again. Or register new student.";
+    }
+
+    @GetMapping("info/{email}")
+    public @ResponseBody Student displayInfo(@PathVariable String email){
+
+        for (Student student:studentList){
+            if(student.getEmail().equals(email))
+                return student;
+        }
+        return null;
+
+    }
+
+    @PostMapping("submit")
+    public @ResponseBody String submit(@RequestParam String email,
+                                          @RequestParam String major,
+                                          @RequestParam int age,
+                                          @RequestParam String password){
+
+        studentList.add(new Student(email, major, age, password));
+        return "Successfully submitted";
+
+    }
 
 }
