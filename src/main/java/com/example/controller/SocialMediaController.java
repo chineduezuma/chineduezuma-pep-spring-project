@@ -10,9 +10,29 @@ import org.springframework.web.bind.annotation.*;
  * refer to prior mini-project labs and lecture materials for guidance on how a controller may be built.
  */
 @Controller
-@RequestMapping()
+@ResponseBody
 public class SocialMediaController {
 
+    @RequestMapping("/register", method = RequestMethod.POST)
+    public @ResponseBody User register(@RequestBody User newUser) {
+        // Logic to register a new user
+    }
+
+    @RequestMapping("/login", method = RequestMethod.POST)
+    public @ResponseBody User login(@RequestBody LoginRequest loginRequest) {
+        // Logic to authenticate user login
+    }
+
+    @RequestMapping("/{userId}", method = RequestMethod.GET)
+    public @ResponseBody User getUserProfile(@PathVariable Long userId) {
+        // Logic to retrieve user profile
+    }
+
+    @RequestMapping("/{userId}", method = RequestMethod.PUT)
+    public @ResponseBody User updateUserProfile(@PathVariable Long userId, @RequestBody User updatedUser) {
+        // Logic to update user profile
+    }
+    
     @PostMapping("submit")
     public ResponseEntity<String> submitInfo(@RequestParam String email,
                                           @RequestParam String major,
