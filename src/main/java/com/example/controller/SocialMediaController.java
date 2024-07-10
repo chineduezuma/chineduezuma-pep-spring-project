@@ -1,5 +1,11 @@
 package com.example.controller;
 
+import com.example.entity.Account;
+import com.example.entity.Message;
+import com.example.service.AccountService;
+import com.example.service.MessageService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,19 +16,44 @@ import org.springframework.web.bind.annotation.*;
  * refer to prior mini-project labs and lecture materials for guidance on how a controller may be built.
  */
 @Controller
+@RestController
 @ResponseBody
 public class SocialMediaController {
 
-    @RequestMapping("/register", method = RequestMethod.POST)
-    public @ResponseBody User register(@RequestBody User newUser) {
+    AccountService accountService;
+    MessageService messageService;
+
+    @Autowired
+    public SocialMediaController(AccountService accountService, MessageService messageService) {
+        this.accountService = accountService;
+        this.messageService = messageService;
+    }
+
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    @PostMapping("/register")
+    public @ResponseBody Account register(@RequestBody Account newUser) {
         // Logic to register a new user
     }
 
-    @RequestMapping("/login", method = RequestMethod.POST)
-    public @ResponseBody User login(@RequestBody LoginRequest loginRequest) {
+
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @PostMapping("/login")
+    public @ResponseBody Account login(@RequestBody Account loginRequest) {
         // Logic to authenticate user login
     }
 
+
+
+    @RequestMapping(value = "/messages", method = RequestMethod.POST)
+    @PostMapping("/messages")
+    public @ResponseBody Message createMessage(@RequestBody Message newMessage) {
+        // Logic to authenticate user login
+    }
+
+    
+    
     @RequestMapping("/{userId}", method = RequestMethod.GET)
     public @ResponseBody User getUserProfile(@PathVariable Long userId) {
         // Logic to retrieve user profile
