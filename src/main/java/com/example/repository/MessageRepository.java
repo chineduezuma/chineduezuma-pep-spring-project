@@ -16,7 +16,16 @@ public interface MessageRepository extends JpaRepository<Message, Integer> {
     @Query("FROM Account WHERE accountId = :accountId")
     Account getAccountByAccountId(@Param("accountId") Integer accountId);
     
+
+    
+    @Query("FROM Message WHERE messageId = :messageId")
+    Message findMessageByMessageId(@Param("messageId") Integer messageId);
+    
+    
+    
     @Query("FROM Message WHERE postedBy = :accountId")
     List<Message> getAllMessagesByAccountId(@Param("accountId") Integer accountId);
+
+    
     
 }

@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -76,7 +77,13 @@ public class SocialMediaController {
     // @RequestMapping(value = "/messages/{message_id}", method = RequestMethod.DELETE)
     @DeleteMapping("/messages/{message_id}")
     public ResponseEntity<Integer> removeMessageByMessageId(@PathVariable Integer messageId) {
-        // Logic to retrieve user profile
+        
+        // Logic to delete message by messageId
+        if (messageService.getMessageByMessageId(messageId) != null){
+            messageService.removeMessageByMessageId(messageId);
+            return ResponseEntity.status(200).body(1);
+        }
+        return ResponseEntity.status(200).body(0);
     }
 
 
@@ -84,7 +91,13 @@ public class SocialMediaController {
     // @RequestMapping(value = "/messages/{message_id}", method = RequestMethod.PATCH)
     @PatchMapping("/messages/{message_id}")
     public ResponseEntity<Integer> updatehMessageByMessageId(@PathVariable Integer messageId, @RequestBody Message newMessage) {
-        // Logic to retrieve user profile
+        
+        // Logic to update message by messageId
+        if (newMessage.getMessageText() != ""){
+        messageService.updateMessageByMessageId(messageId, newMessage);
+        return ResponseEntity.status(200).body(1);
+        }
+        return ResponseEntity.status(400).body(0);
     }
 
     // @RequestMapping(value = "/messages/{message_id}", method = RequestMethod.PATCH)
@@ -98,12 +111,10 @@ public class SocialMediaController {
     // @RequestMapping(value = "/accounts/{account_id}/messages", method = RequestMethod.GET)
     @GetMapping("/accounts/{account_id}/messages")
     public ResponseEntity<List<Message>> getAllMessagesByAccountId(@PathVariable Integer accountId) {
-        private List<Message> messageList = new ArrayList<Message>();
-        // Logic to authenticate user login
+        
+        // Logic to return messages by accountId
+        List<Message> messageList = messageService.getAllMessages(accountId);
         return ResponseEntity.status(200).body(messageList);
-    }
-
-
     }
 
     

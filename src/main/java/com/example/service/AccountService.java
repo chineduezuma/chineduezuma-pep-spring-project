@@ -20,7 +20,11 @@ public class AccountService {
     }
 
 
-
+     /**
+     * This method will persist an account to the Account database table, the equivalent of a
+     * "insert into account" statement.
+     * @return
+     */
     public Account addNewAccount(Account newAccount){
         
         if(newAccount.getUsername() != "" && newAccount.getPassword().length() >= 4 && accountRepository.findAccountByUsername(newAccount.getUsername()) == null){
@@ -31,6 +35,7 @@ public class AccountService {
 
 
 
+    
     public Account verifyAccount(Account account){
         
         if(accountRepository.findAccountByUsernameAndPassword(account.getUsername(), account.getPassword()) != null ){
