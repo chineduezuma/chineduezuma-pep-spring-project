@@ -89,8 +89,8 @@ public class MessageService {
      * of a "select * from message where postBy = accountId" statement.
      * @return
      */
-    public List<Message> getAllMessages(Integer accountId){
-        return messageRepository.getAllMessagesByAccountId(accountId);
+    public List<Message> getAllMessagesByAccountId(Integer accountId){
+        return messageRepository.findAllMessagesByAccountId(accountId);
     }
 
    

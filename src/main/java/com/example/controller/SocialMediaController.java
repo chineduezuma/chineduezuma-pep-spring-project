@@ -55,7 +55,7 @@ public class SocialMediaController {
         
         // Logic to authenticate user login
         if (accountService.verifyAccount(loginRequest) != null){
-            return ResponseEntity.status(200).body(accountService.verifyAccount(loginRequest))
+            return ResponseEntity.status(200).body(accountService.verifyAccount(loginRequest));
         }
         return ResponseEntity.status(401).body(null);
     }
@@ -65,15 +65,23 @@ public class SocialMediaController {
     // @RequestMapping(value = "/messages", method = RequestMethod.POST)
     @PostMapping("/messages")
     public ResponseEntity<Message> addMessage(@RequestBody Message newMessage) {
-        // Logic to authenticate user login
+        
+        // Logic to create a new message
+        if (messageService.addNewMessage(newMessage) != null){
+            return ResponseEntity.status(200).body(messageService.addNewMessage(newMessage));
+        }
+        return ResponseEntity.status(400).body(null);
     }
 
 
 
     // @RequestMapping(value = "/messages", method = RequestMethod.GET)
     @GetMapping("/messages")
-    public ResponseEntity<List<Message>> findAllMessages() {
-        // Logic to authenticate user login
+    public List<Message> findAllMessages() {
+        
+        // Logic to return all messages
+        List<Message> messageList = messageService.getAllMessages();
+        return messageList;
     }
 
     
@@ -81,7 +89,12 @@ public class SocialMediaController {
     // @RequestMapping(value = "/messages/{message_id}", method = RequestMethod.GET)
     @GetMapping("/messages/{message_id}")
     public ResponseEntity<Message> findMessageByMessageId(@PathVariable Integer messageId) {
-        // Logic to retrieve user profile
+        
+        // Logic to retrieve message by messageId
+        if (messageService.getMessageByMessageId(messageId) != null){
+            return ResponseEntity.status(200).body(messageService.getMessageByMessageId(messageId));
+        }
+        return ResponseEntity.status(200).body(null);
     }
 
 
@@ -125,7 +138,7 @@ public class SocialMediaController {
     public List<Message> getAllMessagesByAccountId(@PathVariable Integer accountId) {
         
         // Logic to return messages by accountId
-        List<Message> messageList = messageService.getAllMessages(accountId);
+        List<Message> messageList = messageService.getAllMessagesByAccountId(accountId);
         return messageList;
     }
 
