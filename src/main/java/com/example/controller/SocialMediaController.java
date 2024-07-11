@@ -21,7 +21,7 @@ import java.util.List;
  */
 // @Controller
 @RestController
-//@ResponseBody
+@ResponseBody
 public class SocialMediaController {
 
     AccountService accountService;
@@ -45,6 +45,7 @@ public class SocialMediaController {
             return ResponseEntity.status(409).body(null);
         }
         return ResponseEntity.status(400).body(null);
+        
     }
 
 
