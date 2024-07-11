@@ -35,42 +35,42 @@ public class SocialMediaController {
 
 
     // @RequestMapping(value = "/register", method = RequestMethod.POST)
-    //@PostMapping("/register")
-    //public ResponseEntity<Account> register(@RequestBody Account newUser) {
+    @PostMapping("/register")
+    public ResponseEntity<Account> register(@RequestBody Account newUser) {
         // Logic to register a new user
-   // }
+    }
 
 
 
     // @RequestMapping(value = "/login", method = RequestMethod.POST)
-    //@PostMapping("/login")
-    //public ResponseEntity<Account> addlogin(@RequestBody Account loginRequest) {
+    @PostMapping("/login")
+    public ResponseEntity<Account> addlogin(@RequestBody Account loginRequest) {
         // Logic to authenticate user login
-    //}
+    }
 
 
 
     // @RequestMapping(value = "/messages", method = RequestMethod.POST)
-   // @PostMapping("/messages")
-   // public ResponseEntity<Message> addMessage(@RequestBody Message newMessage) {
+    @PostMapping("/messages")
+    public ResponseEntity<Message> addMessage(@RequestBody Message newMessage) {
         // Logic to authenticate user login
-   // }
+    }
 
 
 
     // @RequestMapping(value = "/messages", method = RequestMethod.GET)
-   // @GetMapping("/messages")
-   // public ResponseEntity<List<Message>> findAllMessages() {
+    @GetMapping("/messages")
+    public ResponseEntity<List<Message>> findAllMessages() {
         // Logic to authenticate user login
-   // }
+    }
 
     
     
     // @RequestMapping(value = "/messages/{message_id}", method = RequestMethod.GET)
-    //@GetMapping("/messages/{message_id}")
-    //public ResponseEntity<Message> findMessageByMessageId(@PathVariable Integer messageId) {
+    @GetMapping("/messages/{message_id}")
+    public ResponseEntity<Message> findMessageByMessageId(@PathVariable Integer messageId) {
         // Logic to retrieve user profile
-   // }
+    }
 
 
 
