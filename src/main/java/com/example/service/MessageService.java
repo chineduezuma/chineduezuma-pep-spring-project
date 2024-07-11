@@ -76,7 +76,7 @@ public class MessageService {
      */
     public void updateMessageByMessageId(Integer messageId, Message newMessage){
         Message message = messageRepository.findMessageByMessageId(messageId);
-        if(newMessage.getMessageText() != "" && newMessage.getMessageText().length() <= 255 && messageRepository.findMessageByMessageId(messageId) == null){
+        if(newMessage.getMessageText() != "" && newMessage.getMessageText().length() <= 255 && messageRepository.findMessageByMessageId(messageId) != null){
             message.setMessageText(newMessage.getMessageText());
             messageRepository.save(message);
        }
