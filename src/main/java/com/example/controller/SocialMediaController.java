@@ -77,11 +77,11 @@ public class SocialMediaController {
 
     // @RequestMapping(value = "/messages", method = RequestMethod.GET)
     @GetMapping("/messages")
-    public List<Message> findAllMessages() {
+    public ResponseEntity<List<Message>> findAllMessages() {
         
         // Logic to return all messages
         List<Message> messageList = messageService.getAllMessages();
-        return messageList;
+        return ResponseEntity.status(200).body(messageList);
     }
 
     
@@ -91,10 +91,9 @@ public class SocialMediaController {
     public ResponseEntity<Message> findMessageByMessageId(@PathVariable Integer messageId) {
         
         // Logic to retrieve message by messageId
-        if (messageService.getMessageByMessageId(messageId) != null){
-            return ResponseEntity.status(200).body(messageService.getMessageByMessageId(messageId));
-        }
-        return ResponseEntity.status(200).body(null);
+       
+        return ResponseEntity.status(200).body(messageService.getMessageByMessageId(messageId));
+       
     }
 
 
