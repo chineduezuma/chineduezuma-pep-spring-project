@@ -37,7 +37,14 @@ public class SocialMediaController {
     // @RequestMapping(value = "/register", method = RequestMethod.POST)
     @PostMapping("/register")
     public ResponseEntity<Account> register(@RequestBody Account newUser) {
+        
         // Logic to register a new user
+        if (accountService.addNewAccount(newUser) != null){
+            return ResponseEntity.status(200).body(accountService.addNewAccount(newUser));
+        }else if (accountService.existingUserAccount(newUser) != null){
+            return ResponseEntity.status(409).body(null);
+        }
+        return ResponseEntity.status(400).body(null);
     }
 
 
@@ -45,6 +52,7 @@ public class SocialMediaController {
     // @RequestMapping(value = "/login", method = RequestMethod.POST)
     @PostMapping("/login")
     public ResponseEntity<Account> addlogin(@RequestBody Account loginRequest) {
+        
         // Logic to authenticate user login
     }
 
@@ -110,11 +118,11 @@ public class SocialMediaController {
 
     // @RequestMapping(value = "/accounts/{account_id}/messages", method = RequestMethod.GET)
     @GetMapping("/accounts/{account_id}/messages")
-    public ResponseEntity<List<Message>> getAllMessagesByAccountId(@PathVariable Integer accountId) {
+    public List<Message> getAllMessagesByAccountId(@PathVariable Integer accountId) {
         
         // Logic to return messages by accountId
         List<Message> messageList = messageService.getAllMessages(accountId);
-        return ResponseEntity.status(200).body(messageList);
+        return messageList;
     }
 
     

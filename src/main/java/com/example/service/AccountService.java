@@ -35,6 +35,16 @@ public class AccountService {
 
 
 
+    public Account existingUserAccount(Account newAccount){
+        
+        if(accountRepository.findAccountByUsername(newAccount.getUsername()) != null){
+             return accountRepository.findAccountByUsername(newAccount.getUsername());
+        }
+        return null;
+    }
+
+
+
     
     public Account verifyAccount(Account account){
         
