@@ -54,8 +54,8 @@ public class SocialMediaController {
     public ResponseEntity<Account> addlogin(@RequestBody Account loginRequest) {
         
         // Logic to authenticate user login
-        if (accountService.existingUserAccount(loginRequest) != null){
-            return ResponseEntity.status(200).body(accountService.existingUserAccount(loginRequest))
+        if (accountService.verifyAccount(loginRequest) != null){
+            return ResponseEntity.status(200).body(accountService.verifyAccount(loginRequest))
         }
         return ResponseEntity.status(401).body(null);
     }

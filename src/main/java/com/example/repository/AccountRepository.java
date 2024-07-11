@@ -15,7 +15,7 @@ public interface AccountRepository extends JpaRepository<Account, Integer> {
 
 
 
-    @Query("FROM Account WHERE username = :username AND password = :password")
+    @Query("FROM Account WHERE username = :username, password = :password")
     Account findAccountByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
 
 }
