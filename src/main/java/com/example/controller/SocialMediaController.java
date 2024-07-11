@@ -108,7 +108,7 @@ public class SocialMediaController {
             messageService.removeMessageByMessageId(messageId);
             return ResponseEntity.status(200).body(1);
         }
-        return ResponseEntity.status(200).body(0);
+        return ResponseEntity.status(200).body(null);
     }
 
 

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -64,7 +65,12 @@ public class MessageService {
      * @return
      */
     public void removeMessageByMessageId(Integer messageId){
-        messageRepository.delete(messageRepository.findMessageByMessageId(messageId));
+        Optional<Message> message = messageRepository.findById(messageId);
+        if(message.isPresent()){
+            Message deletMessage = message.get();
+            messageRepository.delete(deletMessage);
+            // messageRepository.delete(messageRepository.findMessageByMessageId(messageId));
+        }
     }
 
 
