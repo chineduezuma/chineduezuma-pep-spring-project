@@ -13,7 +13,7 @@ import java.util.List;
 public interface MessageRepository extends JpaRepository<Message, Integer> {
 
     @Query("FROM Account WHERE accountId = :accountId")
-    Account getAccountByAccountId(@Param("accountId") Integer accountId);
+    Account findAccountByAccountId(@Param("accountId") Integer accountId);
     
 
     

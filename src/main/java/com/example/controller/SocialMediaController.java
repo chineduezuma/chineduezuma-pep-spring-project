@@ -21,7 +21,7 @@ import java.util.List;
  */
 // @Controller
 @RestController
-@ResponseBody
+//@ResponseBody
 public class SocialMediaController {
 
     AccountService accountService;
@@ -77,11 +77,12 @@ public class SocialMediaController {
 
     // @RequestMapping(value = "/messages", method = RequestMethod.GET)
     @GetMapping("/messages")
-    public ResponseEntity<List<Message>> findAllMessages() {
+    public List<Message> allMessages() {
         
         // Logic to return all messages
         List<Message> messageList = messageService.getAllMessages();
-        return ResponseEntity.status(200).body(messageList);
+        return messageList;
+
     }
 
     

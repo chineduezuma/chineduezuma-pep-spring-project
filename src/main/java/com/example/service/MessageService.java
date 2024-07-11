@@ -29,7 +29,7 @@ public class MessageService {
      */
     public Message addNewMessage(Message newMessage){
         
-        if(newMessage.getMessageText() != "" && newMessage.getMessageText().length() <= 255 && messageRepository.getAccountByAccountId(newMessage.getPostedBy()) == null){
+        if(newMessage.getMessageText() != "" && newMessage.getMessageText().length() <= 255 && messageRepository.findAccountByAccountId(newMessage.getPostedBy()) == null){
              return messageRepository.save(newMessage);
         }
         return null;
