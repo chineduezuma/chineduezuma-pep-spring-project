@@ -100,7 +100,7 @@ public class MessageService {
      * @return
      */
     public List<Message> getAllMessagesByAccountId(Integer accountId){
-        return messageRepository.findAllMessagesByAccountId(accountId);
+        return messageRepository.findAllMessagesByPostedBy(accountId);
     }
 
    

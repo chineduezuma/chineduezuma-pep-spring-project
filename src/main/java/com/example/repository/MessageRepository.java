@@ -23,7 +23,7 @@ public interface MessageRepository extends JpaRepository<Message, Integer> {
     
     
     @Query("FROM Message WHERE postedBy = :accountId")
-    List<Message> findAllMessagesByAccountId(@Param("accountId") Integer accountId);
+    List<Message> findAllMessagesByPostedBy(@Param("accountId") Integer accountId);
 
     
     
