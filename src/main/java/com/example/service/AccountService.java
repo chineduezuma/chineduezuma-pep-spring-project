@@ -50,7 +50,7 @@ public class AccountService {
     public Account verifyAccount(Account account){
         
         if(accountRepository.findAccountByUsernameAndPassword(account.getUsername(), account.getPassword()) != null ){
-             return accountRepository.save(account);
+             return accountRepository.findAccountByUsernameAndPassword(account.getUsername(), account.getPassword());
         }
         return null;
     }
