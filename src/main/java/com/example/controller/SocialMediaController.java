@@ -104,11 +104,11 @@ public class SocialMediaController {
 
     // @RequestMapping(value = "/messages/{message_id}", method = RequestMethod.DELETE)
     @DeleteMapping("/messages/{message_id}")
-    public ResponseEntity<Integer> removeMessageByMessageId(@PathVariable Integer messageId) {
+    public ResponseEntity<Integer> removeMessageByMessageId(@PathVariable Integer message_id) {
         
         // Logic to delete message by messageId
-        if (messageService.getMessageByMessageId(messageId) != null){
-            messageService.removeMessageByMessageId(messageId);
+        if (messageService.getMessageByMessageId(message_id) != null){
+            messageService.removeMessageByMessageId(message_id);
             return ResponseEntity.status(200).body(1);
         }
         return ResponseEntity.status(200).body(null);
@@ -118,11 +118,11 @@ public class SocialMediaController {
 
     // @RequestMapping(value = "/messages/{message_id}", method = RequestMethod.PATCH)
     @PatchMapping("/messages/{message_id}")
-    public ResponseEntity<Integer> updatehMessageByMessageId(@PathVariable Integer messageId, @RequestBody Message newMessage) {
+    public ResponseEntity<Integer> updatehMessageByMessageId(@PathVariable Integer message_id, @RequestBody Message newMessage) {
         
         // Logic to update message by messageId
         if (newMessage.getMessageText() != ""){
-        messageService.updateMessageByMessageId(messageId, newMessage);
+        messageService.updateMessageByMessageId(message_id, newMessage);
         return ResponseEntity.status(200).body(1);
         }
         return ResponseEntity.status(400).body(0);
