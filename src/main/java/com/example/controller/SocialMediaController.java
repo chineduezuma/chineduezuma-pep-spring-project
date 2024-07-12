@@ -121,12 +121,12 @@ public class SocialMediaController {
     public ResponseEntity<Integer> updatehMessageByMessageId(@PathVariable Integer message_id, @RequestBody Message newMessage) {
         
         // Logic to update message by messageId
-        messageService.updateMessageByMessageId(message_id, newMessage);
-        Message message = messageService.getMessageByMessageId(message_id);
-        if (newMessage.getMessageText().equals(message.getMessageText())){
-            return ResponseEntity.status(200).body(1); 
+        Message message =messageService.updateMessageByMessageId(message_id, newMessage);
+        
+        if (message == null){
+            return ResponseEntity.status(400).body(0);
         }
-        return ResponseEntity.status(400).body(0);
+        return ResponseEntity.status(200).body(1); 
     }
 
     // @RequestMapping(value = "/messages/{message_id}", method = RequestMethod.PATCH)

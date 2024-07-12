@@ -85,16 +85,18 @@ public class MessageService {
      * "update message set messageText = messageText  where messageId = messageId" statement.
      * @return
      */
-    public void updateMessageByMessageId(Integer messageId, Message newMessage){
+    public Message updateMessageByMessageId(Integer messageId, Message newMessage){
+       
         Optional<Message> message = messageRepository.findById(messageId);
         if(message.isPresent()){
             Message originalMessage = message.get();
         
             if(newMessage.getMessageText() != "" && newMessage.getMessageText().length() <= 255 && originalMessage != null){
                 originalMessage.setMessageText(newMessage.getMessageText());
-                messageRepository.save(originalMessage);
+                return messageRepository.save(originalMessage);
             }
         }
+        return null;
     }
 
 
