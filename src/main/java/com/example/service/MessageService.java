@@ -55,8 +55,9 @@ public class MessageService {
      */
     public Message getMessageByMessageId(Integer messageId){
         
-        if(messageRepository.findMessageByMessageId(messageId) != null){
-        return messageRepository.findMessageByMessageId(messageId);
+        Optional<Message> message = messageRepository.findById(messageId);
+        if(message.isPresent()){
+        return message.get();
         }
         return null;
     }   
@@ -85,11 +86,15 @@ public class MessageService {
      * @return
      */
     public void updateMessageByMessageId(Integer messageId, Message newMessage){
-        Message message = messageRepository.findMessageByMessageId(messageId);
-        if(newMessage.getMessageText() != "" && newMessage.getMessageText().length() <= 255 && messageRepository.findMessageByMessageId(messageId) != null){
-            message.setMessageText(newMessage.getMessageText());
-            messageRepository.save(message);
-       }
+        Optional<Message> message = messageRepository.findById(messageId);
+        if(message.isPresent()){
+            Message originalMessage = message.get();
+        
+            if(newMessage.getMessageText() != "" && newMessage.getMessageText().length() <= 255 && originalMessage != null){
+                originalMessage.setMessageText(newMessage.getMessageText());
+                messageRepository.save(originalMessage);
+            }
+        }
     }
 
 

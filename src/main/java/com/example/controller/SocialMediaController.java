@@ -121,9 +121,10 @@ public class SocialMediaController {
     public ResponseEntity<Integer> updatehMessageByMessageId(@PathVariable Integer message_id, @RequestBody Message newMessage) {
         
         // Logic to update message by messageId
-        if (newMessage.getMessageText() != ""){
         messageService.updateMessageByMessageId(message_id, newMessage);
-        return ResponseEntity.status(200).body(1);
+        Message message = messageService.getMessageByMessageId(message_id);
+        if (newMessage.getMessageText().equals(message.getMessageText())){
+            return ResponseEntity.status(200).body(1); 
         }
         return ResponseEntity.status(400).body(0);
     }
@@ -138,10 +139,10 @@ public class SocialMediaController {
 
     // @RequestMapping(value = "/accounts/{account_id}/messages", method = RequestMethod.GET)
     @GetMapping("/accounts/{account_id}/messages")
-    public List<Message> getAllMessagesByAccountId(@PathVariable Integer accountId) {
+    public List<Message> getAllMessagesByAccountId(@PathVariable Integer account_id) {
         
         // Logic to return messages by accountId
-        List<Message> messageList = messageService.getAllMessagesByAccountId(accountId);
+        List<Message> messageList = messageService.getAllMessagesByAccountId(account_id);
         return messageList;
     }
 
