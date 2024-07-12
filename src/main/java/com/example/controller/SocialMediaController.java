@@ -90,11 +90,13 @@ public class SocialMediaController {
     
     // @RequestMapping(value = "/messages/{message_id}", method = RequestMethod.GET)
     @GetMapping("/messages/{message_id}")
-    public ResponseEntity<Message> findMessageByMessageId(@PathVariable Integer messageId) {
+    public ResponseEntity<Message> findMessageByMessageId(@PathVariable Integer message_id) {
         
         // Logic to retrieve message by messageId
-       
-        return ResponseEntity.status(200).body(messageService.getMessageByMessageId(messageId));
+       if (messageService.getMessageByMessageId(message_id) != null){
+             return ResponseEntity.status(200).body(messageService.getMessageByMessageId(message_id));
+       }
+        return ResponseEntity.status(200).body(null);
        
     }
 

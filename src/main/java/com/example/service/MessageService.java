@@ -54,9 +54,9 @@ public class MessageService {
      * @return
      */
     public Message getMessageByMessageId(Integer messageId){
-        Optional<Message> message = messageRepository.findById(messageId);
-        if(message.isPresent()){
-        return message.get();
+        
+        if(messageRepository.findMessageByMessageId(messageId) != null){
+        return messageRepository.findMessageByMessageId(messageId);
         }
         return null;
     }   
